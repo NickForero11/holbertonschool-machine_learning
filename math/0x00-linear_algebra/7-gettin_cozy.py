@@ -19,10 +19,10 @@ def cat_matrices2D(mat1, mat2, axis=0):
     """
 
     # Row wise
-    if axis == 0:
+    if axis == 0 and len(mat1[0]) == len(mat2[0]):
         response = [vector[:] for vector in (*mat1, *mat2)]
     # Column wise
-    elif axis == 1:
+    elif axis == 1 and len(mat1) == len(mat2):
         response = []
         for idx in range(len(mat1)):
             response.append(cat_arrays(mat1[idx], mat2[idx]))
