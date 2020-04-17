@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Module to compute the shape of a matrix"""
 
 
