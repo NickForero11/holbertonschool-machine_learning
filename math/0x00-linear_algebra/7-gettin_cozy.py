@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Module to compute the concatenation of two 2D matrices"""
-cat_arrays = __import__('2-size_me_please').matrix_shape
+cat_arrays = __import__('6-howdy_partner').cat_arrays
 
 
 def cat_matrices2D(mat1, mat2, axis=0):
