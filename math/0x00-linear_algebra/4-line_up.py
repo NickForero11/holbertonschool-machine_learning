@@ -10,7 +10,8 @@ def add_arrays(arr1, arr2):
         arr2 (list): a list of ints/floats.
 
     Returns:
-        list: a list of ints/float with the elements of arr1 and arr2.
+        list:   a list of ints/float with the summatory of
+                the elements of arr1 and arr2 in each index.
     """
     if len(arr1) != len(arr2):
         return None
