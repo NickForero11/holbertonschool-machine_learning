@@ -35,10 +35,10 @@ def poly_integral(poly, C=0):
     else:
         terms = len(poly)
         # If poly = 0 integral => 0x + C => C
+        response = [C]
         if terms == 1:
-            return [C]
+            return response
         else:
-            response = [0]
             for idx in range(terms):
                 term = poly[idx] / (idx + 1)
                 whole_term = int(term)
