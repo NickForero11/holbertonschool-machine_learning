@@ -17,7 +17,7 @@ def poly_derivative(poly):
                 a list with a zero if the derivative is zero or
                 None if the polynomial is invalid.
     """
-    if not poly:
+    if not poly or not isinstance(poly, list):
         return None
     invalid_elements = filter(
         lambda item_type: not isinstance(item_type, (int, float)),
