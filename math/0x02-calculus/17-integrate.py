@@ -41,8 +41,7 @@ def poly_integral(poly, C=0):
         else:
             for idx in range(terms):
                 term = poly[idx] / (idx + 1)
-                whole_term = int(term)
-                response.append(whole_term if whole_term == term else term)
+                response.append(int(term) if term % 1 == 0 else term)
             # Delete empty coefficients at the end of the list
             while response[-1] == 0:
                 response.pop()
