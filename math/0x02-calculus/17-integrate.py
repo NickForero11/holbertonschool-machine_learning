@@ -36,7 +36,7 @@ def poly_integral(poly, C=0):
         terms = len(poly)
         response = [C]
         # If poly = 0 integral => 0x + C => C
-        if terms == [0]:
+        if poly == [0]:
             return response
         else:
             for idx in range(terms):
