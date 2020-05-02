@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Module to represent the Poisson Distribution
 """
+e = 2.7182818285
 
 
 def factorial(number):
@@ -61,9 +62,38 @@ class Poisson():
         Returns:
             float: the PMF value for k, 0 otherwise
         """
+        # Check parameters
         if k < 0:
             return 0
         if not isinstance(k, int):
             k = int(k)
-        e = 2.7182818285
-        return ((e ** (-self.lambtha) * (self.lambtha ** k)) / factorial(k))
+        # Compute numerator and denominator
+        numerator = (e ** (-self.lambtha)) * (self.lambtha ** k)
+        denominator = factorial(k)
+        return numerator / denominator
+
+    def cdf(self, k):
+        """Calculates the value of the CDF for a given number of “successes”.
+
+        Arguments:
+            k (integer): is the number of “successes”.
+
+        Returns:
+            float: the CDF value for k, 0 otherwise.
+        """
+        # Check parameters
+        if k < 0:
+            return 0
+
+        if not isinstance(k, int):
+            k = int(k)
+        result = 0
+
+        # Integrate from 0 to k + 1
+        # because summatory is inclusive and range() is exclusive
+        # Also we can extract e^lambtha because is constant
+        for iteration in range(k + 1):
+            result += (self.lambtha ** iteration) / factorial(iteration)
+        # Multiply the result with the constant e^lambtha
+        # to finalize the integral.
+        return (e ** (-self.lambtha)) * result
