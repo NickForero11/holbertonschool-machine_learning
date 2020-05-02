@@ -42,3 +42,25 @@ class Normal():
                     )
                     variance = sum(differences_squared) / num_of_elements
                     self.stddev = variance ** 0.5  # it means sqrt(variance)
+
+    def z_score(self, x):
+        """Calculates the z-score of a given x-value.
+
+        Arguments:
+            x (Int, Float): the x-value as a number.
+
+        Returns:
+            float: the z-score of x.
+        """
+        return (x - self.mean) / self.stddev
+
+    def x_value(self, z):
+        """Calculates the x-value of a given z-score.
+
+        Arguments:
+            z (Int, Float): the z-score.
+
+        Returns:
+            float: the x-value of z.
+        """
+        return (z * self.stddev) + self.mean
