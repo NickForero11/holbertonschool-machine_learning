@@ -83,9 +83,32 @@ class Binomial():
             return 0
         if not isinstance(k, int):
             k = int(k)
+
         combination = (
             factorial(self.n) / (factorial(k) * factorial(self.n - k))
         )
         # if you multiplicate the combination with the next as variable
         # it will be a different value due to the floating number precision
         return combination * (self.p ** k) * ((1 - self.p) ** (self.n - k))
+
+    def cdf(self, k):
+        """Calculates the value of the CDF for a given number of “successes”.
+
+        Arguments:
+            k (integer): is the number of “successes”.
+
+        Returns:
+            float: the CDF value for k, 0 otherwise.
+        """
+        # Check parameters
+        if k < 0:
+            return 0
+        if not isinstance(k, int):
+            k = int(k)
+
+        result = 0
+        # Summatory from 0 to k, so k needs to be included in range
+        # then add k + 1 as limit of range because its non inclusive
+        for index in range(k + 1):
+            result += self.pmf(index)
+        return result
