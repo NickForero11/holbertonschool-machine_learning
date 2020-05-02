@@ -5,6 +5,19 @@ pi = 3.1415926536
 e = 2.7182818285
 
 
+def erf(x):
+    """Computes the related error.
+
+    Arguments:
+        x (Int, Float): the x-value as a number.
+
+        Returns:
+            Float: the related error for x.
+    """
+    base = (x - (x ** 3 / 3) + (x ** 5 / 10) - (x ** 7 / 42) + (x ** 9 / 216))
+    return ((2 / (pi ** 0.5)) * base)
+
+
 class Normal():
     """Class that represents a Normal Distribution.
     """
@@ -81,3 +94,15 @@ class Normal():
         numerator = e ** exponent
         denominator = self.stddev * ((2 * pi) ** 0.5)
         return numerator / denominator
+
+    def cdf(self, x):
+        """Calculates the value of the CDF for a given x-value.
+
+        Arguments:
+            x (Int, Float): the x-value as a number.
+
+        Returns:
+            Float: the CDF value for x.
+        """
+        x_value = (x - self.mean) / (self.stddev * (2 ** 0.5))
+        return (1 + erf(x_value)) / 2
