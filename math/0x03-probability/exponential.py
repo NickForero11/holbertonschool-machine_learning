@@ -44,8 +44,23 @@ class Exponential():
             x (int): the time period represented as an integer.
 
         Returns:
-            int: the PDF for the @x time period, 0 if x is out of range.
+            float: the PDF for the @x time period, 0 if x is out of range.
         """
         if x < 0:
             return 0
-        return self.lambtha * (e ** (-self.lambtha * x))
+        else:
+            return self.lambtha * (e ** (-self.lambtha * x))
+
+    def cdf(self, x):
+        """Calculates the value of the CDF for a given time period.
+
+        Arguments:
+            x (int): the time period represented as an integer.
+
+        Returns:
+            float: the CDF for the @x time period, 0 if x is out of range.
+        """
+        if x < 0:
+            return 0
+        else:
+            return 1 - (e ** (-self.lambtha * x))
