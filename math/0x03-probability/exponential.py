@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Module to represent the Exponential Distribution
 """
+e = 2.7182818285
 
 
 class Exponential():
@@ -35,3 +36,16 @@ class Exponential():
                     raise ValueError('data must contain multiple values')
                 else:
                     self.lambtha = num_of_elements / sum(data)
+
+    def pdf(self, x):
+        """Calculates the value of the PDF for a given time period.
+
+        Arguments:
+            x (int): the time period represented as an integer.
+
+        Returns:
+            int: the PDF for the @x time period, 0 if x is out of range.
+        """
+        if x < 0:
+            return 0
+        return self.lambtha * (e ** (-self.lambtha * x))
