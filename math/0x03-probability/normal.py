@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 """Module to represent the Normal Distribution
 """
+pi = 3.1415926536
+e = 2.7182818285
 
 
 class Normal():
     """Class that represents a Normal Distribution.
     """
+
     def __init__(self, data=None, mean=0., stddev=1.):
         """Initializes a Normal Distribution.
 
         Keyword Arguments:
             data (List):    a list of the data to be used
                             to estimate the distribution (default: {None})
-            mean (float):   the mean of the distribution (default: {0.})
-            stddev (float): the standard deviation of the distribution
+            mean (Float):   the mean of the distribution (default: {0.})
+            stddev (Float): the standard deviation of the distribution
                             (default: {1.})
 
         Raises:
@@ -50,7 +53,7 @@ class Normal():
             x (Int, Float): the x-value as a number.
 
         Returns:
-            float: the z-score of x.
+            Float: the z-score of x.
         """
         return (x - self.mean) / self.stddev
 
@@ -61,6 +64,20 @@ class Normal():
             z (Int, Float): the z-score.
 
         Returns:
-            float: the x-value of z.
+            Float: the x-value of z.
         """
         return (z * self.stddev) + self.mean
+
+    def pdf(self, x):
+        """Calculates the value of the PDF for a given x-value.
+
+        Arguments:
+            x (Int, Float): the x-value as a number.
+
+        Returns:
+            Float: the PDF value for x.
+        """
+        exponent = ((-((x - self.mean) ** 2)) / (2 * (self.stddev ** 2)))
+        numerator = e ** exponent
+        denominator = self.stddev * ((2 * pi) ** 0.5)
+        return numerator / denominator
