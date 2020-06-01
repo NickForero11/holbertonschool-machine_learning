@@ -199,6 +199,6 @@ class Neuron():
         # Start Training
         for i in range(iterations):
             A = self.forward_prop(X)
-            self.gradient_descent(X, Y, A)
+            self.gradient_descent(X, Y, A, alpha)
         evaluation = self.evaluate(X, Y)
         return evaluation
