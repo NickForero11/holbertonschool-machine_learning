@@ -157,5 +157,5 @@ class Neuron():
         differential_in_z = A - Y
         differential_in_w = (X @ differential_in_z.T) / number_of_labels
         differential_in_b = differential_in_z.sum() / number_of_labels
-        self.__W = self.W - (alpha * differential_in_w)
+        self.__W = self.W - (alpha * differential_in_w.T)
         self.__b = self.b - (alpha * differential_in_b)
