@@ -79,7 +79,7 @@ class Neuron():
         if input_shape[0] != weights_shape[1]:
             print("Dimension error")
         else:
-            y = (np.dot(self.W, X)) + self.b
+            y = (self.W @ X) + self.b
             # Applies the sigmoid function as activation function.
             activated = 1 / (1 + np.exp(-y))
             self.__A = activated
@@ -104,5 +104,5 @@ class Neuron():
             float: the cost of the model.
         """
         number_of_labels = Y.shape[1]
-        cost = -((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A)))
-        return np.sum(cost / number_of_labels)
+        cost = np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
+        return (-1 / number_of_labels) * cost

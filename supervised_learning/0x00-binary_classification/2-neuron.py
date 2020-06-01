@@ -67,8 +67,8 @@ class Neuron():
         Arguments:
             X (numpy.ndarray):  an array with shape (nx, m) that contains
                                 the input data, where:
-                                - nx: number of input features to the neuron
-                                - m: number of examples
+                                - nx: number of input features to the neuron.
+                                - m: number of examples.
 
         Returns:
             float: The activated output of the neuron(prediction).
@@ -79,7 +79,7 @@ class Neuron():
         if input_shape[0] != weights_shape[1]:
             print("Dimension error")
         else:
-            y = (np.dot(self.W, X)) + self.b
+            y = (self.W @ X) + self.b
             # Applies the sigmoid function as activation function.
             activated = 1 / (1 + np.exp(-y))
             self.__A = activated
