@@ -27,19 +27,19 @@ def convolve_grayscale_same(images, kernel):
     # Save Dimmensions
     kh, kw = kernel.shape
     m, h, w = images.shape
-    padding = int((kh - 1) / 2)
+    # Calculate padding for width and height
+    pw = int(kw / 2 if kw % 2 == 0 else (kw - 1) / 2)
+    ph = int(kh / 2 if kh % 2 == 0 else (kh - 1) / 2)
     # Apply padding to images
     padded_images = np.pad(
         images,
-        [(0, 0), (padding, padding), (padding, padding)],
-        mode='constant', constant_values=0
-        )
-    # Make output template
-    output_shape = (m, h - kh + 1 + (2 * padding), w - kw + 1 + (2 * padding))
-    output = np.zeros(output_shape)
+        [(0, 0), (ph, ph), (pw, pw)]
+    )
+    # Create template
+    output = np.zeros(images.shape)
     # Fill template
-    for row in range(output_shape[1]):
-        for column in range(output_shape[2]):
+    for row in range(h):
+        for column in range(w):
             # Split the part that you need from every image
             sub_matrix = padded_images[:, row: row + kh, column: column + kw]
             # Apply the kernel and sum every resultant matrix to get
