@@ -33,12 +33,10 @@ def convolve_grayscale_valid(images, kernel):
     # Fill template
     for row in range(output_shape[1]):
         for column in range(output_shape[2]):
-            # Check that you aren't convoluting out of the images
-            if not (row + kh >= h or column + kw >= w):
-                # Split the part that you need from every image
-                sub_matrix = images[:, row: row + kh, column: column + kw]
-                # Apply the kernel and sum every resultant matrix to get
-                # the convolution value in that point for every image
-                output[:, row, column] = (sub_matrix * kernel).sum(axis=(1, 2))
+            # Split the part that you need from every image
+            sub_matrix = images[:, row: row + kh, column: column + kw]
+            # Apply the kernel and sum every resultant matrix to get
+            # the convolution value in that point for every image
+            output[:, row, column] = (sub_matrix * kernel).sum(axis=(1, 2))
 
     return output
