@@ -72,14 +72,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
 
     # Compute shape of the outputs
     (m, h, w) = padded_images.shape
-    if padding == 'same':
-        output_shape = (
-            m,
-            int(((h + (2 * ph) - kh) / sh) + 1),
-            int(((w + (2 * pw) - kw) / sw) + 1)
-        )
-    else:
-        output_shape = (m, int(((h - kh) / sh) + 1), int(((w - kw) / sw) + 1))
+    output_shape = (m, int(((h - kh) / sh) + 1), int(((w - kw) / sw) + 1))
 
     # Make output template
     output = np.zeros(output_shape)
