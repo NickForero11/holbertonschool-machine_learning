@@ -84,7 +84,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
             sub_matrix = padded_images[
                 :,
                 (row * sh): (row * sh) + kh,
-                (column * sh): (column * sh) + kw
+                (column * sw): (column * sw) + kw
             ]
             # Apply the kernel and sum every resultant matrix to get
             # the convolution value in that point for every image
